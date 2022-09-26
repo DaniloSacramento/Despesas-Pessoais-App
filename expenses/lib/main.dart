@@ -45,7 +45,7 @@ class MyHomePage extends StatelessWidget {
         children: <Widget> [
           Container(
             width: double.infinity,
-            child: Card(
+            child: const Card(
               color: Colors.blue,
               child: Text("Grafico"),
             ),
@@ -56,13 +56,13 @@ class MyHomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 15,
                         vertical: 10
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color.fromARGB(255, 196, 57, 221),
+                          color: const Color.fromARGB(255, 196, 57, 221),
                           width: 2,
                           ),
                           
@@ -70,7 +70,7 @@ class MyHomePage extends StatelessWidget {
                       padding: EdgeInsets.all(10) ,   // Todas direçoes margin de 10
                       child: Text(
                         tr.value.toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                           color: Colors.purple,
@@ -82,7 +82,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           
                           Text(tr.title.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold
                           ),),
@@ -91,16 +91,13 @@ class MyHomePage extends StatelessWidget {
                             fontSize: 14,
                              color: Colors.grey[250]
                           ),)
-                        ],
-                        
+                        ],                        
                       )
                   ],
                 ),
               );
-
             }).toList(),
           )
-
         ],
       )
     );
