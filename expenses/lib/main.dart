@@ -27,13 +27,13 @@ class MyHomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget> [
             Container(
               child: const Card(
                 color: Colors.blue,
                 child: Text("Grafico"),
+                elevation: 5,
               ),
             ),
             TransactionUser(),
