@@ -2,12 +2,19 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
-class TransactionForm extends StatelessWidget {
-   final titleControler = TextEditingController();  // O estado interno ainda vai mudar
-   final valueControler = TextEditingController();
+class TransactionForm extends StatefulWidget {
    final void Function(String, double) onSubmit;
 
   TransactionForm(this.onSubmit);
+
+  @override
+  State<TransactionForm> createState() => _TransactionFormState();
+}
+
+class _TransactionFormState extends State<TransactionForm> {
+   final titleControler = TextEditingController();  
+  // O estado interno ainda vai mudar
+   final valueControler = TextEditingController();
 
   _submitForm () {
                     final title = titleControler.text;
@@ -16,7 +23,7 @@ class TransactionForm extends StatelessWidget {
                     if(title.isEmpty || value <= 0 ) {
                          return;
                             }
-                    onSubmit(title, value);
+                    widget.onSubmit(title, value); // consegue acessar todos os parametros que forem passados no componentes
                           }
 
   @override

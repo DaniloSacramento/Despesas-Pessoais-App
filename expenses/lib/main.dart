@@ -57,6 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _transactions.add(newTransaction);
 
     });
+
+    Navigator.of(context).pop(); // O pop sere para fechar 
   }
 
   _openTransactionFormModal(BuildContext context){
