@@ -10,13 +10,13 @@ class TransactionForm extends StatelessWidget {
   TransactionForm(this.onSubmit);
 
   _submitForm () {
-                            final title = titleControler.text;
-                            final value = double.tryParse(valueControler.text) ?? 0.0;
+                    final title = titleControler.text;
+                    final value = double.tryParse(valueControler.text) ?? 0.0;
                         
-                            if(title.isEmpty || value <= 0 ) {
-                              return;
+                    if(title.isEmpty || value <= 0 ) {
+                         return;
                             }
-                             onSubmit(title, value);
+                    onSubmit(title, value);
                           }
 
   @override
