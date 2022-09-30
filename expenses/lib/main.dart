@@ -1,4 +1,5 @@
-
+ 
+import 'dart:ui';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -13,15 +14,32 @@ import "dart:math";
 main() => runApp(ExpensesApp());
 class ExpensesApp extends StatelessWidget {
   final ThemeData tema = ThemeData();
+  
+ 
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage(),
+    return MaterialApp(
+    home: MyHomePage(),
     theme: tema.copyWith(
         colorScheme: tema.colorScheme.copyWith(
-          primary: Colors.purple[800],
+          primary: Colors.purple,
           secondary: Colors.black,
-          
+        ),
+        textTheme: tema.textTheme.copyWith(
+          headline6: const TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          )
+        ),
+         appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
