@@ -32,7 +32,7 @@ class TransactionList extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: const Color.fromARGB(255, 196, 57, 221),
+                          color: Theme.of(context).colorScheme.primary,
                           width: 2,
                           ),
                           
@@ -40,10 +40,10 @@ class TransactionList extends StatelessWidget {
                       padding: EdgeInsets.all(10) ,   // Todas direçoes margin de 10
                       child: Text(
                       "R\$ ${tr.value.toString()}" ,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Colors.purple,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       ),

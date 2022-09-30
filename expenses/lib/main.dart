@@ -12,11 +12,18 @@ import "dart:math";
 
 main() => runApp(ExpensesApp());
 class ExpensesApp extends StatelessWidget {
-  const ExpensesApp({super.key});
+  final ThemeData tema = ThemeData();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage()
+    return MaterialApp(home: MyHomePage(),
+    theme: tema.copyWith(
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Colors.purple[800],
+          secondary: Colors.black,
+          
+        ),
+      ),
     );
   }
 }
