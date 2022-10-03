@@ -1,71 +1,71 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatefulWidget {
-   final void Function(String, double) onSubmit;
+  final void Function(String, double) onSubmit;
 
-  TransactionForm(this.onSubmit);
+  const TransactionForm(this.onSubmit, {Key? key}) : super(key: key);
 
   @override
   State<TransactionForm> createState() => _TransactionFormState();
 }
 
 class _TransactionFormState extends State<TransactionForm> {
-   final titleControler = TextEditingController();  
-  // O estado interno ainda vai mudar
-   final valueControler = TextEditingController();
+  final titleController = TextEditingController();
 
-  _submitForm () {
-                    final title = titleControler.text;
-                    final value = double.tryParse(valueControler.text) ?? 0.0;
-                        
-                    if(title.isEmpty || value <= 0 ) {
-                         return;
-                            }
-                    widget.onSubmit(title, value); // consegue acessar todos os parametros que forem passados no componentes
-                          }
+  final valueController = TextEditingController();
+
+  _submitForm() {
+    final title = titleController.text;
+    final value = double.tryParse(valueController.text) ?? 0;
+
+    if (title.isEmpty || value <= 0) {
+      return;
+    }
+
+    widget.onSubmit(title, value);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Card(
-            elevation: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  TextField(
-                  controller: titleControler,
-                  onSubmitted: (_) => _submitForm(),
-                    decoration: InputDecoration(
-                      labelText: "Título",
-                    ),
-                  ),
-                     TextField (
-                      controller: valueControler,
-                      keyboardType: TextInputType.numberWithOptions(decimal: true),
-                      onSubmitted: (_) => _submitForm()
-                      ,
-                      decoration: InputDecoration(
-                        labelText: "Valor (R\$)",
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                       TextButton(
-                          child: const Text("Nova Transação" ,
-                        style: const TextStyle(
-                            color: Colors.purple,
-                          ),
-                        ),
-                          onPressed: _submitForm ,
-                       ),
-                    ],
-                 )
-              ],
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            TextField(
+              controller: titleController,
+              onSubmitted: (_) => _submitForm(),
+              decoration: const InputDecoration(
+                labelText: 'Título',
               ),
             ),
-          );
+            TextField(
+              controller: valueController,
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
+              onSubmitted: (_) => _submitForm(),
+              decoration: const InputDecoration(
+                labelText: 'Valor (R\$)',
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: const Text(
+                    'Nova Transação',
+                    style: TextStyle(
+                      color: Colors.purple,
+                    ),
+                  ),
+                  onPressed: _submitForm,
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
