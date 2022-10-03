@@ -1,10 +1,11 @@
-import 'dart:js_util';
+
 import "package:intl/intl.dart";
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import '../models/transaction.dart';
+import 'chart_bar.dart';
 
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransaction;
@@ -21,24 +22,37 @@ class Chart extends StatelessWidget {
 
       double totalSum = 0.0;
       for(var i  = 0; i<recentTransaction.length; i++){
-       bool sameDay = recentTransaction[i].date.day == weekDay.day
+       bool sameDay = recentTransaction[i].date.day == weekDay.day;
+       bool sameMonth = recentTransaction[i].date.month == weekDay.month;
+       bool sameYear = recentTransaction[i].date.year == weekDay.year;
+
+       if(sameDay && sameMonth && sameYear){
+         totalSum += recentTransaction[i].value!;
+       }
       }
 
-
+    
       
        return {
         "day" : DateFormat.E().format(weekDay)[0],
-        "value": 9.99};
+        "value": totalSum};
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    groupedTransactions;
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20) ,
       child: Row(
-        children: [],
+        children: groupedTransactions.map((tr) {
+       return ChartBar(
+            label: tr['day'] as String,
+            value: tr['value'] as double,
+            percentage: 0,
+          );
+        }).toList(),
       ),
     );
   }
